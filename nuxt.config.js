@@ -2,13 +2,12 @@ import tailwindTypography from '@tailwindcss/typography';
 import tailwindForm from '@tailwindcss/forms';
 
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   experimental:{
     viewTransition: true,
     renderJsonPayloads: true,
     payloadExtraction: false,
   },
-  ssr: false,
   modules: [
     "@nuxtjs/tailwindcss",
     "nuxt-icon",
