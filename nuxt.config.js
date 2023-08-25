@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     renderJsonPayloads: true,
     payloadExtraction: false,
   },
+  ssr: false,
   modules: [
     "@nuxtjs/tailwindcss",
     "nuxt-icon",
@@ -36,8 +37,8 @@ export default defineNuxtConfig({
     },
   },
 
-  // build:{
-  //   transpile: ['vue-toastification'],
-  // }
+  build:{
+    transpile: ['vue-toastification'],
+  }
   
 })

@@ -2,8 +2,10 @@
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
-export default defineNuxtPlugin(nuxtApp => {
-    nuxtApp.vueApp.use(Toast, {
-        hideProgressBar : true
-    });
-})
+const options = {
+    timeout:1500
+}
+
+export default defineNuxtPlugin((nuxtApp) =>
+ nuxtApp.vueApp.use(Toast , options)
+)
