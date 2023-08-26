@@ -79,7 +79,7 @@
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
                     <div class="px-6 py-3">
-                        <span class="text-sm text-gray-500">{{ category.created_at }}</span>
+                        <span class="text-sm text-gray-500">{{ $dayjs(category.created_at).format('D MMM YYYY') }}</span>
                     </div>
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
@@ -99,10 +99,10 @@
               <label class="text-xs font-bold">Category Title</label>
               <TextInput v-model="form.title" placeholder="Title" />
           </div>
-          <div class="relative">
+          <!-- <div class="relative">
               <label class="text-xs font-bold">Category Slug</label>
               <TextInput v-model="form.slug" placeholder="Slug" />
-          </div>
+          </div> -->
           <button class="bg-gray-900 text-white w-full rounded-lg py-3 text-sm" @click="saveData">Save Category</button>
           <button @click="addModal = !addModal" class="border w-full rounded-lg py-3 text-sm">Cancel</button>
         </div>
@@ -113,6 +113,9 @@
 </template>
 
 <script setup>
+    import { useToast, POSITION } from "vue-toastification";
+    const toast = useToast();
+
   definePageMeta({
     layout: 'admin',
     middleware: 'auth'
@@ -132,21 +135,26 @@
   const categories = ref([])
 
   const saveData = async () => {
-      try {
-          loading.value = true;
-          const { error } = await supabase
-              .from('category')
-              .insert({ 
-                  title:   form.title,
-                  slug:    form.slug,
-              })   
-      } catch (error) {
-          console.log(error)
-      } finally {
-          loading.value = false;
-          fetchData()
-          addModal.value = false
-      }
+        convertToSlug()
+        try {
+            loading.value = true;
+            const { error } = await supabase
+                .from('category')
+                .insert({ 
+                    title:   form.title,
+                    slug:    form.slug,
+                })   
+        } catch (error) {
+            console.log(error)
+        } finally {
+            loading.value = false;
+            fetchData()
+            addModal.value = false
+            toast.success("Successfully Added", {
+                timeout: 2000,
+                position: POSITION.TOP_CENTER
+            });
+        }
   }
 
   const fetchData = async () => {
@@ -167,6 +175,13 @@
           .eq('id', id) 
       fetchData()
   }
+    const convertToSlug = () => {
+        var theSlug = form.title
+        theSlug = theSlug.toLowerCase();
+        theSlug = theSlug.replace(/\s+/g, '-')
+        theSlug = theSlug.replace(/&/g, 'and')
+        form.slug = theSlug
+    }
 </script>
 
 

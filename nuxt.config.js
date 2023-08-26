@@ -2,7 +2,7 @@ import tailwindTypography from '@tailwindcss/typography';
 import tailwindForm from '@tailwindcss/forms';
 
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   experimental:{
     viewTransition: true,
     renderJsonPayloads: true,
@@ -15,7 +15,8 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
     "nuxt-headlessui",
     "@pinia/nuxt",
-    "dayjs-nuxt"
+    "dayjs-nuxt",
+    "nuxt-swiper"
   ],
   supabase: {
     redirect: false,

@@ -55,7 +55,7 @@
     const links = ref([
         {title: 'Home', href: '/'},
         {title: 'Leasing', href: '/leasing'},
-        {title: 'Blogs', href: '/blog'},
+        // {title: 'Blogs', href: '/blog'},
         {title: 'Contact', href: '/contact'},
     ])
 </script>

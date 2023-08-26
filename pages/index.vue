@@ -1,11 +1,63 @@
 <script setup>
-  const user = useSupabaseUser()
-  const supabase = useSupabaseClient()
-
+    const user = useSupabaseUser()
+    const supabase = useSupabaseClient()
+    
+    useHead({
+        title: 'The Brand Spaces',
+        meta: [
+            { name: 'description', content: 'We at The Brand Spaces consult clients on their space requirements and curate properties that align with their vision' }
+        ],
+    })
 </script>
 
 <template>
   <div>
+    <!-- Hero -->
+    <div class="relative overflow-hidden">
+        <!-- Gradients -->
+        <div aria-hidden="true" class="flex absolute -top-96 left-1/2 transform -translate-x-1/2">
+            <div class="bg-gradient-to-r from-red-300/50 to-red-100 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem]"></div>
+            <div class="bg-gradient-to-tl from-red-50 via-red-100 to-red-50 blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem]"></div>
+        </div>
+        <!-- End Gradients -->
+
+        <div class="relative z-10">
+            <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+                <div class="max-w-2xl text-center mx-auto">
+                    <p class="inline-block text-sm font-medium bg-clip-text bg-gradient-to-l from-red-600 to-red-500 text-transparent">
+                        Space Leasing | Business Franchisee | Pre- leased 
+                    </p>
+
+                    <!-- Title -->
+                    <div class="mt-5 max-w-2xl">
+                        <h1 class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl">
+                            SPACE that works for you.
+                        </h1>
+                    </div>
+                    <!-- End Title -->
+
+                    <div class="mt-5 max-w-3xl">
+                        <p class="text-lg text-gray-600">We at The Brand Spaces consult clients on their space requirements and curate properties that align with their vision</p>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center">
+                        <NuxtLink to="/leasing" class="inline-flex justify-center items-center gap-x-3 text-center bg-red-600 hover:bg-red-500 border border-transparent text-white text-sm font-medium rounded-md px-4" href="javascript:;">
+                            Explore Space Leasing
+                            <Icon name="material-symbols:arrow-forward-ios-rounded" />
+                        </NuxtLink>
+                        <a class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-gray-200 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm" href="https://franchisedestiny.com/" target="_blank">
+                            Explore Business Franchise
+                            <Icon name="ph:share-fat" />
+                        </a>
+                    </div>
+                    <!-- End Buttons -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero -->
+
     <section class="bg-white py-6 md:py-20 border-b relative">
         <div class='flex flex-col md:flex-row gap-6 md:gap-12 w-full items-center p-6 rounded-md max-w-6xl mx-auto z-[1] relative'>
             <img src='/images/about-us.svg' alt='sample-image' class='md:w-1/2 md:h-[60vh] object-cover rounded' loading="lazy" />

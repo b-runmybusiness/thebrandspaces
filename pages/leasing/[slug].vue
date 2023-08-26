@@ -39,7 +39,63 @@
                 <button class="absolute top-3 left-4 bg-white/75 px-2 py-1.5 rounded text-xs text-gray-900 items-center flex gap-1" @click.prevent="$router.back()">
                     <Icon name="ic:sharp-keyboard-backspace" class="w-5 h-5" />
                 </button>
+                <button
+                    type="button"
+                    @click="openModal"
+                    class="rounded-md bg-black/50 px-4 py-2 text-sm font-medium text-white  absolute bottom-2 right-2">
+                    View more
+                </button>
             </section>
+
+            <!-- gallery viewer -->
+            <TransitionRoot appear :show="imagePreviewer" as="template">
+                <Dialog as="div" @close="closeModal" class="relative z-10">
+                    <TransitionChild
+                        as="template"
+                        enter="duration-300 ease-out"
+                        enter-from="opacity-0"
+                        enter-to="opacity-100"
+                        leave="duration-200 ease-in"
+                        leave-from="opacity-100"
+                        leave-to="opacity-0"
+                    >
+                        <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" />
+                    </TransitionChild>
+
+                    <div class="fixed inset-0 overflow-y-auto">
+                        <div class="flex min-h-full items-center justify-center text-center w-auto cursor-pointer">
+                            <TransitionChild
+                                as="template"
+                                enter="duration-300 ease-out"
+                                enter-from="opacity-0 scale-95"
+                                enter-to="opacity-100 scale-100"
+                                leave="duration-200 ease-in"
+                                leave-from="opacity-100 scale-100"
+                                leave-to="opacity-0 scale-95"
+                            >
+                                <DialogPanel class="w-auto transform overflow-hidden text-left h-full align-middle transition-all">
+                                    <Swiper
+                                        :modules="[SwiperAutoplay, SwiperEffectCreative]"
+                                        :slides-per-view="0.9"
+                                        :loop="false"
+                                        class="overflow-hidden h-full w-auto"
+                                    >
+                                        <SwiperSlide 
+                                            v-for="image in leasing.images" 
+                                            :key="image"
+                                            class="h-full w-full object-contain"
+                                        >
+                                            <div class='card-media h-full w-full object-contain'>
+                                                <img :src="`https://srkaxgtxygietqipfctd.supabase.co/storage/v1/object/public/gallery/${image}`" :alt="leasing.title" class="h-full w-full object-contain" preload  />
+                                            </div>
+                                        </SwiperSlide>
+                                    </Swiper>
+                                </DialogPanel>
+                            </TransitionChild>
+                        </div>
+                    </div>
+                </Dialog>
+            </TransitionRoot>
 
             <div class="flex flex-col md:flex-row py-6 md:gap-10">
                 <div class="md:w-[65%]">
@@ -125,10 +181,27 @@
 </template>
 
 <script setup>
+    import {
+        TransitionRoot,
+        TransitionChild,
+        Dialog,
+        DialogPanel,
+        DialogTitle,
+    } from '@headlessui/vue'
     const route = useRoute();
     const supabase = useSupabaseClient()
     
+    const contactForm = ref(false)
+
     const leasing = ref({})
+    const imagePreviewer = ref(false)
+
+    function closeModal() {
+        imagePreviewer.value = false
+    }
+    function openModal() {
+        imagePreviewer.value = true
+    }
 
     const fetchData = async () => {
         const {data} = await supabase

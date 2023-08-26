@@ -266,6 +266,7 @@
 
     const saveData = async () => {
         convertToSlug()
+        console.log(form)
         try {
             loading.value = true;
             const { error } = await supabase
@@ -334,6 +335,7 @@
         .select()
         if(data){
             categories.value = data
+            form.category_id = data[0].id
         }
 
     const uploadImages = async (evt) => {
