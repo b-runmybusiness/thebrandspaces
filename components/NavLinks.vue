@@ -4,14 +4,14 @@
             <NuxtLink 
                 :to="link.href"  
                 @click="$emit('closeNavbar')" 
-                class="w-32 py-1 text-sm hover:border-b" 
+                class="w-32 py-1 text-sm" 
                 >
                 {{ link.title }}
             </NuxtLink>
         </button>
-        <button class="w-full flex items-center justify-center">
+        <!-- <button class="w-full flex items-center justify-center">
             <a href="https://franchisedestiny.com/" target="_blank" rel="noopener noreferrer" class="w-32 py-1 text-sm hover:border-b">Business Franchise</a>
-        </button>
+        </button> -->
     </div>
 </template>
 
