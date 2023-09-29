@@ -13,7 +13,7 @@
                   v-for="image in leasing.images.slice(0, 1)"
                   :key="image.id"
                   >
-                  <img :src="`https://srkaxgtxygietqipfctd.supabase.co/storage/v1/object/public/gallery/${image}`" :alt="leasing.title" class="h-full w-full object-cover hover:scale-125 hover:rotate-3 transition duration-700 ease-in-out cursor-pointer" />
+                  <img :src="`https://fcxbrpopspdlwnyangsb.supabase.co/storage/v1/object/public/gallery/${image}`" :alt="leasing.title" class="h-full w-full object-cover hover:scale-125 hover:rotate-3 transition duration-700 ease-in-out cursor-pointer" />
               </figure>
           </template>
           <template v-else>

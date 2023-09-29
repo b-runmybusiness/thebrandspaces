@@ -54,8 +54,8 @@
     } catch (error) {
       alert(error.error_description || error.message)
     } finally {
-      // return navigateTo('/')
       loginloading.value = false
+      return navigateTo('/admin/dashboard');
     }
   }
 

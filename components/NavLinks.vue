@@ -19,6 +19,7 @@
     const links = ref([
         {title: 'Home', href: '/'},
         {title: 'Space Leasing', href: '/leasing'},
+        {title: 'Franchises', href: '/franchise'},
         // {title: 'Blogs', href: '/blog'},
         {title: 'Contact', href: '/contact'},
     ])

@@ -2,12 +2,17 @@
     const user = useSupabaseUser()
     const supabase = useSupabaseClient()
     
+
+    const BLOGURL = "https://d251pozxe7k40y.cloudfront.net/blog/featured/";
+
     useHead({
         title: 'The Brand Spaces',
         meta: [
             { name: 'description', content: 'We at The Brand Spaces consult clients on their space requirements and curate properties that align with their vision' }
         ],
     })
+
+    
 </script>
 
 <template>
@@ -188,11 +193,25 @@
     <section class="bg-white md:py-20 py-6 border-b">
         <div class="max-w-6xl mx-auto p-6 md:p-0" >
             <h2 class="uppercase mb-12 text-3xl font-bold text-center"><span class="text-primary">BRAND</span> EXPERIENCE</h2>
-            <BrandExperience />
+            <div class="grid grid-cols-5 gap-5">
+                <figure class="shadow border border-zinc-100 rounded-xl p-3 flex items-center justify-center">
+                    <img src="/brands/1.jpg" alt="">
+                </figure>
+                <figure class="shadow border border-zinc-100 rounded-xl p-3 flex items-center justify-center">
+                    <img src="/brands/2.jpg" alt="">
+                </figure>
+                <figure class="shadow border border-zinc-100 rounded-xl p-3 flex items-center justify-center">
+                    <img src="/brands/3.jpg" alt="">
+                </figure>
+                <figure class="shadow border border-zinc-100 rounded-xl p-3 flex items-center justify-center">
+                    <img src="/brands/4.jpg" alt="">
+                </figure>
+                <figure class="shadow border border-zinc-100 rounded-xl p-3 flex items-center justify-center">
+                    <img src="/brands/5.jpg" alt="">
+                </figure>
+            </div>
         </div>
     </section>
-
-    <!-- Blog -->
-    
+  
   </div>
 </template>

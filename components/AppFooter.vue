@@ -16,21 +16,17 @@
                   </ul>
               </div>
               <div class="w-full hidden md:block">
-                  <h2 class="mb-4 text-sm font-semibold text-zinc-900 uppercase">Franchise Categories</h2>
+                  <h2 class="mb-4 text-sm font-semibold text-zinc-900 uppercase">Categories</h2>
                   <ul class="text-zinc-600 dark:text-zinc-400 text-sm">
-                      <li class="mb-3"><a href="#" class="hover:underline">Automotive</a></li>
-                      <li class="mb-3"><a href="#" class="hover:underline">Beauty &amp; Health</a></li>
-                      <li class="mb-3"><a href="#" class="hover:underline">Business Services</a></li>
-                      <li class="mb-3"><a href="#" class="hover:underline">Dealers &amp; Distributors</a></li>
+                    <li class="mb-3" v-for="category in categories" :key="category">
+                            <a href="#" class="hover:underline">{{ category.title }}</a>
+                        </li>
                   </ul>
               </div>
               <div class="w-full hidden md:block">
                   <h2 class="mb-4 text-sm font-semibold text-zinc-900 uppercase">&nbsp;</h2>
                   <ul class="text-zinc-600 dark:text-zinc-400 text-sm">
-                      <li class="mb-3"><a href="#" class="hover:underline">Education</a></li>
-                      <li class="mb-3"><a href="#" class="hover:underline">Fashion</a></li>
-                      <li class="mb-3"><a href="#" class="hover:underline">Retail</a></li>
-                      <li class="mb-3"><a href="#" class="hover:underline">Sports, Fitness &amp; Entertainment</a></li>
+                        
                   </ul>
               </div>
               <div class="w-full hidden md:block">
@@ -47,7 +43,17 @@
     </footer>
   </template>
   
-  <script setup></script>
+<script setup>
+    const supabase = useSupabaseClient()
+
+    const categories = ref([])
+    const { data, error } = await supabase
+        .from('category')
+        .select()
+        if(data){
+            categories.value = data
+        }
+</script>
   
   <style scoped></style>
   

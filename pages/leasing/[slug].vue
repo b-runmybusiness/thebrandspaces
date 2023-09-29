@@ -33,7 +33,7 @@
 
             <section class="relative">
                 <template v-if="leasing.images">
-                    <img :src="`https://srkaxgtxygietqipfctd.supabase.co/storage/v1/object/public/gallery/${leasing.images[0]}`" preload class="w-full md:h-[70vh] object-cover" />
+                    <img :src="`https://fcxbrpopspdlwnyangsb.supabase.co/storage/v1/object/public/gallery/${leasing.images[0]}`" preload class="w-full md:h-[70vh] object-cover" />
                 </template>
                 <img v-else src="/placeholder.jpg" alt="runmybusiness-placeholder-image" class="w-full md:h-[70vh] object-cover" preload />
                 <button class="absolute top-3 left-4 bg-white/75 px-2 py-1.5 rounded text-xs text-gray-900 items-center flex gap-1" @click.prevent="$router.back()">
@@ -86,7 +86,7 @@
                                             class="h-full w-full object-contain"
                                         >
                                             <div class='card-media h-full w-full object-contain'>
-                                                <img :src="`https://srkaxgtxygietqipfctd.supabase.co/storage/v1/object/public/gallery/${image}`" :alt="leasing.title" class="h-full w-full object-contain" preload  />
+                                                <img :src="`https://fcxbrpopspdlwnyangsb.supabase.co/storage/v1/object/public/gallery/${image}`" :alt="leasing.title" class="h-full w-full object-contain" preload  />
                                             </div>
                                         </SwiperSlide>
                                     </Swiper>

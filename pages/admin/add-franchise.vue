@@ -175,7 +175,7 @@
                             </div>
                             <div class="grid grid-cols-4 gap-4">
                                 <figure v-for="(image, index) in preview" :key="index" class="w-full relative overflow-hidden">
-                                    <img :src="`https://srkaxgtxygietqipfctd.supabase.co/storage/v1/object/public/gallery/${image}`" alt="" class="border w-full h-44 object-cover rounded-xl">
+                                    <img :src="`https://fcxbrpopspdlwnyangsb.supabase.co/storage/v1/object/public/gallery/${image}`" alt="" class="border w-full h-44 object-cover rounded-xl">
                                     <button @click="deleteImage(index, image)" class="border rounded-lg bg-gray-900 text-white w-full py-1 text-xs">
                                         Delete
                                         <Icon name="material-symbols:delete-outline" class="h-4 w-4" />
@@ -266,14 +266,14 @@
 
     const saveData = async () => {
         convertToSlug()
-        console.log(form)
+       
         try {
             loading.value = true;
             const { error } = await supabase
                 .from('franchise')
                 .insert({ 
                     title:                              form.title,
-                    slug:                               slug.value,
+                    slug:                               form.slug,
                     category_id:                        form.category_id,
                     description:                        form.description,
                     area_required:                      form.area_required,
